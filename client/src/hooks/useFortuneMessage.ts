@@ -36,7 +36,7 @@ const fortunes = [
   "The dark side has cookies, but your path has authentic joy.",
   "Trust your feelings - they'll lead you to amazing places.",
   
-  // Marvel references
+  // Marvel references (expanded)
   "With great power comes great opportunity. Use it wisely.",
   "You're stronger than you know. That's your superpower.",
   "Even the strongest avengers needed friends. Lean on yours.",
@@ -46,6 +46,20 @@ const fortunes = [
   "The real infinity stones are the talents inside you.",
   "In the endgame of life, you'll come out on top.",
   "On your left! Good things are coming up fast.",
+  "Dormammu, I've come to bargain! Life will negotiate with you if you're persistent.",
+  "That is America's smile. Wear it proudly.",
+  "Your success is inevitable... I am inevitable.",
+  "The hardest choices require the strongest wills. You've got what it takes.",
+  "Reality can be whatever you want it to be. Dream big!",
+  "Part of the journey is the end... but your best chapter is just beginning.",
+  "We're in the endgame now, and you're positioned to win.",
+  "You will never be a god... but you can be an awesome human being.",
+  "That's my secret, I'm always awesome. You are too.",
+  "No amount of money ever bought a second of time. Use yours wisely.",
+  "There was an idea... to bring together remarkable people. You're one of them.",
+  "You're made of iron, forged through challenges and stronger for it.",
+  "A bit of both savage and mindful. You've got the Banner/Hulk balance.",
+  "Whatever it takes - you've got the determination to succeed.",
   
   // Classic movie quotes/references
   "Life is like a box of chocolates. Yours is filled with the good ones.",
@@ -104,6 +118,28 @@ const fortunes = [
   "No need for cheat codes - you're winning this game fairly.",
   "Achievement unlocked: Awesome Future Ahead",
   "Like a perfect TikTok algorithm, you're connecting with your destiny.",
+  
+  // Gen Z slang/references 
+  "No cap - your future's looking extra bright.",
+  "You're giving main character energy and we're here for it.",
+  "That thing you're worried about? It's cheugy. Let it go.",
+  "Keep that rizz going strong. You're more capable than you know.",
+  "Your vibe check results are elite. Keep up the positive energy.",
+  "Big yikes to doubts. You're about to slay your goals.",
+  "You're about to go from mid to elite tier in your chosen field.",
+  "Sheesh! Your potential is living rent-free in everyone's mind.",
+  "It's giving success. Periodt.",
+  "You understood the assignment. Now go ace it.",
+  "The universe is simping for your success. We stan.",
+  "Your glow-up era starts now. And that's on periodt.",
+  "Hits different when you believe in yourself. Try it.",
+  "Bestie, your future is about to be so fire.",
+  "The main timeline is where you thrive. No multiverse needed.",
+  "Consider this a sign to level up. It's bussin'.",
+  "Your next W is already on the way.",
+  "This isn't a POV, it's the truth: you're going places.",
+  "It's giving winner energy, ngl.",
+  "Stay booked and busy with things that matter.",
   
   // More inspirational quotes
   "Your playlist of success has unlimited skips and no ads.",
