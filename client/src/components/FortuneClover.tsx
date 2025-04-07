@@ -15,42 +15,42 @@ export default function FortuneClover({
   bottom, 
   delay 
 }: FortuneCloverProps) {
-  // Randomly choose between pixel art characters for 80s vibe
-  const pixelChars = ["🍀", "★", "✦", "■", "▲", "□", "◊", "●", "▢"];
-  const randomIndex = Math.floor(Math.random() * pixelChars.length);
-  const pixelChar = pixelChars[randomIndex];
+  // Random rotation for Windows XP style fun
+  const rotation = Math.floor(Math.random() * 40) - 20; // -20 to +20 degrees
   
-  // Random rotation for extra fun
-  const rotation = Math.floor(Math.random() * 360);
-  
-  // Random color from 80s/Stranger Things palette
-  const retroColors = ["#FF00FF", "#00FFFF", "#FF0000", "#00FF00", "#8800FF", "#FF00AA"];
-  const randomColorIndex = Math.floor(Math.random() * retroColors.length);
-  const color = retroColors[randomColorIndex];
+  // Y2K style colors - light greens only (good luck theme)
+  const y2kGreenColors = ["#75ad75", "#91c391", "#66aa66", "#4c9e4c", "#338833"];
+  const randomColorIndex = Math.floor(Math.random() * y2kGreenColors.length);
+  const color = y2kGreenColors[randomColorIndex];
   
   return (
     <div 
-      className="fixed animate-sparkle" 
+      className="fixed floating-clover" 
       style={{ 
         top, 
         left, 
         right, 
-        bottom, 
-        fontSize: `${size}px`, 
-        color: color, 
+        bottom,
+        width: `${size}px`,
+        height: `${size}px`,
         animationDelay: `${delay}s`,
-        zIndex: -1,
-        opacity: 0.7,
+        zIndex: 1,
+        opacity: 0.6,
         transform: `rotate(${rotation}deg)`,
-        filter: `drop-shadow(0 0 5px ${color})`,
-        fontFamily: 'monospace',
-        textShadow: `0 0 8px ${color}`,
-        // Pixel art rendering
-        imageRendering: 'pixelated',
-        fontWeight: 'bold'
+        filter: 'none',
+        pointerEvents: 'none'
       }}
     >
-      {pixelChar}
+      <img 
+        src="/pixel-clover.svg" 
+        alt="Clover"
+        width={size}
+        height={size}
+        style={{
+          filter: `hue-rotate(${Math.random() * 20 - 10}deg) brightness(${0.9 + Math.random() * 0.3})`,
+          imageRendering: 'pixelated'
+        }}
+      />
     </div>
   );
 }

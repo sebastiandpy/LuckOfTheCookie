@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .pixel {
+      shape-rendering: crispEdges;
+    }
+  </style>
+  <!-- Four-leaf clover pixelated design -->
+  <!-- Leaf top left -->
+  <rect class="pixel" x="12" y="4" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="16" y="4" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="8" y="8" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="12" y="8" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="16" y="8" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="8" y="12" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="12" y="12" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="16" y="12" width="4" height="4" fill="#66aa66"/>
+
+  <!-- Leaf top right -->
+  <rect class="pixel" x="20" y="4" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="24" y="4" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="20" y="8" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="24" y="8" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="28" y="8" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="20" y="12" width="4" height="4" fill="#66aa66"/>
+  <rect class="pixel" x="24" y="12" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="28" y="12" width="4" height="4" fill="#75ad75"/>
+
+  <!-- Leaf bottom left -->
+  <rect class="pixel" x="8" y="20" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="12" y="20" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="16" y="20" width="4" height="4" fill="#66aa66"/>
+  <rect class="pixel" x="8" y="24" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="12" y="24" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="16" y="24" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="12" y="28" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="16" y="28" width="4" height="4" fill="#75ad75"/>
+
+  <!-- Leaf bottom right -->
+  <rect class="pixel" x="20" y="20" width="4" height="4" fill="#66aa66"/>
+  <rect class="pixel" x="24" y="20" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="28" y="20" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="20" y="24" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="24" y="24" width="4" height="4" fill="#91c391"/>
+  <rect class="pixel" x="28" y="24" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="20" y="28" width="4" height="4" fill="#75ad75"/>
+  <rect class="pixel" x="24" y="28" width="4" height="4" fill="#75ad75"/>
+  
+  <!-- Stem -->
+  <rect class="pixel" x="18" y="16" width="4" height="4" fill="#4c9e4c"/>
+  <rect class="pixel" x="18" y="20" width="2" height="8" fill="#4c9e4c"/>
+  <rect class="pixel" x="18" y="28" width="2" height="8" fill="#4c9e4c"/>
+  
+  <!-- Center -->
+  <rect class="pixel" x="16" y="16" width="2" height="2" fill="#338833"/>
+  <rect class="pixel" x="18" y="16" width="2" height="2" fill="#338833"/>
+  <rect class="pixel" x="20" y="16" width="2" height="2" fill="#338833"/>
+  <rect class="pixel" x="22" y="16" width="2" height="2" fill="#338833"/>
+</svg>
