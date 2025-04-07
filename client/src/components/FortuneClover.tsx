@@ -15,18 +15,18 @@ export default function FortuneClover({
   bottom, 
   delay 
 }: FortuneCloverProps) {
-  // Randomly choose between clover, star, sparkle, or heart for Y2K vibe
-  const y2kEmojis = ["🍀", "⭐", "✨", "💫", "💖"];
-  const randomIndex = Math.floor(Math.random() * y2kEmojis.length);
-  const emoji = y2kEmojis[randomIndex];
+  // Randomly choose between pixel art characters for 80s vibe
+  const pixelChars = ["🍀", "★", "✦", "■", "▲", "□", "◊", "●", "▢"];
+  const randomIndex = Math.floor(Math.random() * pixelChars.length);
+  const pixelChar = pixelChars[randomIndex];
   
   // Random rotation for extra fun
   const rotation = Math.floor(Math.random() * 360);
   
-  // Random color from Y2K palette
-  const y2kColors = ["#FF00FF", "#00FFFF", "#FFFF00", "#00FF00", "#FF3366"];
-  const randomColorIndex = Math.floor(Math.random() * y2kColors.length);
-  const color = y2kColors[randomColorIndex];
+  // Random color from 80s/Stranger Things palette
+  const retroColors = ["#FF00FF", "#00FFFF", "#FF0000", "#00FF00", "#8800FF", "#FF00AA"];
+  const randomColorIndex = Math.floor(Math.random() * retroColors.length);
+  const color = retroColors[randomColorIndex];
   
   return (
     <div 
@@ -40,13 +40,17 @@ export default function FortuneClover({
         color: color, 
         animationDelay: `${delay}s`,
         zIndex: -1,
-        opacity: 0.8,
+        opacity: 0.7,
         transform: `rotate(${rotation}deg)`,
-        filter: 'drop-shadow(0 0 3px rgba(255,255,255,0.7))',
-        textShadow: '0 0 5px rgba(255,255,255,0.5)'
+        filter: `drop-shadow(0 0 5px ${color})`,
+        fontFamily: 'monospace',
+        textShadow: `0 0 8px ${color}`,
+        // Pixel art rendering
+        imageRendering: 'pixelated',
+        fontWeight: 'bold'
       }}
     >
-      {emoji}
+      {pixelChar}
     </div>
   );
 }

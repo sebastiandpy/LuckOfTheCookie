@@ -17,31 +17,51 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#9966CC] to-[#FF99CC] font-comic-sans relative overflow-hidden">
-      {/* Y2K Stars Background */}
+    <div className="min-h-screen bg-black font-mono relative overflow-hidden">
+      {/* Retro 80s Stars Background */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[5%] left-[5%] w-4 h-4 bg-yellow-300 rounded-full animate-pulse"></div>
-        <div className="absolute top-[15%] left-[25%] w-3 h-3 bg-pink-300 rounded-full animate-pulse"></div>
-        <div className="absolute top-[25%] left-[65%] w-5 h-5 bg-blue-300 rounded-full animate-pulse"></div>
-        <div className="absolute top-[65%] left-[85%] w-4 h-4 bg-green-300 rounded-full animate-pulse"></div>
-        <div className="absolute top-[85%] left-[15%] w-3 h-3 bg-purple-300 rounded-full animate-pulse"></div>
-        <div className="absolute top-[45%] left-[45%] w-6 h-6 bg-yellow-300 rounded-full animate-pulse"></div>
+        {/* Starfield effect */}
+        {Array.from({ length: 100 }).map((_, i) => (
+          <div 
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full animate-pulse" 
+            style={{ 
+              top: `${Math.random() * 100}%`, 
+              left: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.7 + 0.3,
+              animationDuration: `${Math.random() * 3 + 1}s`
+            }}
+          ></div>
+        ))}
       </div>
       
-      {/* Custom Y2K Cursor */}
+      {/* Retro Scanlines Effect */}
       <div 
-        className="fixed w-8 h-8 z-50 pointer-events-none" 
+        className="fixed inset-0 pointer-events-none z-1 opacity-15"
+        style={{
+          backgroundImage: 'linear-gradient(transparent 50%, rgba(0, 0, 0, 0.8) 50%)',
+          backgroundSize: '4px 4px',
+        }}
+      ></div>
+      
+      {/* RGB Offset Effect for text is now in index.css */}
+      
+      {/* Stranger Things inspired cursor - flashlight effect */}
+      <div 
+        className="fixed w-60 h-60 z-50 pointer-events-none" 
         style={{ 
           left: `${cursorPosition.x}px`, 
           top: `${cursorPosition.y}px`,
           transform: 'translate(-50%, -50%)',
-          backgroundImage: 'radial-gradient(circle, rgba(255,0,255,0.7) 0%, rgba(255,255,0,0.5) 70%, transparent 100%)',
-          boxShadow: '0 0 10px #FF00FF, 0 0 20px #FFFF00',
+          background: 'radial-gradient(circle, rgba(220, 0, 45, 0.2) 0%, rgba(80, 10, 165, 0.15) 40%, transparent 70%)',
+          boxShadow: '0 0 30px rgba(180, 20, 20, 0.3), 0 0 50px rgba(90, 20, 120, 0.2)',
           borderRadius: '50%',
+          filter: 'blur(2px)',
+          mixBlendMode: 'screen',
         }}
       ></div>
       
-      {/* Background Decorative Y2K Elements */}
+      {/* Background Decorative Elements - Pixel Clovers */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <FortuneClover size={20} top="10%" left="10%" delay={0} />
         <FortuneClover size={14} top="15%" right="15%" delay={0.5} />
@@ -60,14 +80,18 @@ function App() {
         <FortuneClover size={24} top="75%" right="45%" delay={4.2} />
       </div>
 
-      {/* Retro Grid Lines */}
-      <div className="fixed inset-0 pointer-events-none z-0" 
-        style={{
-          backgroundImage: 'linear-gradient(0deg, rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
-          backgroundPosition: 'center center'
-        }}
-      ></div>
+      {/* Retro Neon Grid Lines */}
+      <div className="fixed inset-0 pointer-events-none z-0 retro-grid"></div>
+      
+      {/* CRT Screen Effect */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-blue-400 opacity-70 animate-pulse" 
+          style={{ animationDuration: '4s' }}></div>
+        <div className="absolute top-1/3 left-0 w-full h-[2px] bg-blue-400 opacity-50 animate-pulse" 
+          style={{ animationDuration: '7s' }}></div>
+        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-blue-400 opacity-30 animate-pulse" 
+          style={{ animationDuration: '5s' }}></div>
+      </div>
 
       <div className="container mx-auto px-4 pt-8 pb-16 relative z-10">
         <Header />
