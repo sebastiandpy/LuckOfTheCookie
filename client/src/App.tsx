@@ -1,133 +1,137 @@
-import { useState } from "react";
-import useFortuneMessage from "./hooks/useFortuneMessage";
+import FortuneContainer from "./components/FortuneContainer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import FortuneClover from "./components/FortuneClover";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { fortune, generateFortune } = useFortuneMessage();
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isPowerOn, setIsPowerOn] = useState(false);
   
-  const handleOpenCookie = () => {
-    if (!isOpen) {
-      setIsOpen(true);
-      generateFortune();
-    }
-  };
-  
-  const handleGetNewFortune = () => {
-    setIsOpen(false);
-    setTimeout(() => {
-      setIsOpen(true);
-      generateFortune();
-    }, 300);
-  };
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    // Simulate arcade cabinet power up
+    const timer = setTimeout(() => {
+      setIsPowerOn(true);
+    }, 800);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen relative bg-gradient-to-b from-[#d8f0d8] to-[#c7e6c7] overflow-hidden">
-      {/* Windows XP-style desktop background pattern */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0" 
+    <div className={`min-h-screen bg-black font-mono relative overflow-hidden ${isPowerOn ? 'power-up' : ''}`}>
+      {/* Arcade Carpet Background */}
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        {/* Arcade floor texture */}
+        <div className="absolute inset-0 opacity-10" 
              style={{
-               opacity: 0.05,
-               backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20z' fill='%23338833' fill-opacity='0.2'/%3E%3C/svg%3E\")",
+               backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23FF00FF' fill-opacity='0.1'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E\")",
              }}
         ></div>
+        
+        {/* Arcade blinking lights */}
+        {Array.from({ length: 40 }).map((_, i) => (
+          <div 
+            key={i}
+            className="absolute w-1 h-1 rounded-full glow-button" 
+            style={{ 
+              top: `${Math.random() * 100}%`, 
+              left: `${Math.random() * 100}%`,
+              backgroundColor: ['#FF00FF', '#00FFFF', '#FFFF00'][i % 3],
+              opacity: Math.random() * 0.5 + 0.3,
+              animationDuration: `${Math.random() * 2 + 1}s`,
+              animationDelay: `${Math.random() * 2}s`
+            }}
+          ></div>
+        ))}
       </div>
       
-      {/* Lucky clovers floating in background */}
-      <FortuneClover size={16} top="8%" left="5%" delay={0} />
-      <FortuneClover size={12} top="15%" right="8%" delay={1} />
-      <FortuneClover size={18} bottom="10%" left="7%" delay={2} />
-      <FortuneClover size={14} bottom="20%" right="6%" delay={1.5} />
-      <FortuneClover size={20} top="40%" left="3%" delay={3} />
-      <FortuneClover size={10} top="25%" right="4%" delay={2.5} />
+      {/* Retro Scanlines Effect */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-1 opacity-10"
+        style={{
+          backgroundImage: 'linear-gradient(transparent 50%, rgba(0, 0, 0, 0.8) 50%)',
+          backgroundSize: '4px 4px',
+        }}
+      ></div>
       
-      <div className="container mx-auto px-4 py-8 relative z-10">
-        {/* Windows XP-style header title */}
-        <header className="text-center mb-8">
-          <div className="bg-[#75ad75] inline-block px-6 py-3 rounded-lg shadow-md border-2 border-[#4c9e4c] mb-3">
-            <h1 
-              className="text-3xl sm:text-4xl md:text-5xl font-bold"
-              style={{ 
-                fontFamily: '"Comic Sans MS", cursive',
-                color: '#FFFFFF',
-                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)'
-              }}
-            >
-              luck of the day
-            </h1>
-          </div>
-          
-          {/* Windows XP subtitle */}
-          <div className="mt-2 px-4 py-2 inline-block bg-white border border-[#4c9e4c] rounded-lg shadow-sm">
-            <p className="text-sm sm:text-base"
-               style={{ fontFamily: '"Comic Sans MS", cursive', color: '#338833' }}>
-              ✨ your daily dose of good fortune ✨
-            </p>
-          </div>
-        </header>
-        
-        <main className="flex flex-col items-center justify-center">
-          {/* Fortune cookie container */}
-          <div className="max-w-md w-full mx-auto bg-white rounded-xl shadow-md p-6 mb-8 border-2 border-[#75ad75]">
-            {!isOpen ? (
-              /* Closed cookie with "tap to open" text */
-              <div className="flex flex-col items-center">
-                <p className="text-[#4c9e4c] mb-4" 
-                   style={{ fontFamily: '"Comic Sans MS", cursive' }}>
-                  tap to open
-                </p>
-                
-                <div 
-                  className="inline-block cursor-pointer y2k-glow"
-                  onClick={handleOpenCookie}
-                >
-                  <img 
-                    src="/cookie-closed.svg" 
-                    alt="Fortune Cookie" 
-                    className="w-48 h-auto transition-transform hover:scale-105"
-                  />
-                </div>
-              </div>
-            ) : (
-              /* Open cookie with fortune message */
-              <div className="flex flex-col items-center">
-                <div className="mb-6 cookie-open-animation">
-                  <img 
-                    src="/cookie-open.svg" 
-                    alt="Fortune Cookie Open" 
-                    className="w-48 h-auto"
-                  />
-                </div>
-                
-                {/* Classic Windows-style message box */}
-                <div className="w-full bg-[#f0f8f0] border border-[#75ad75] rounded-md p-4 mb-6">
-                  <p 
-                    className="text-center text-lg text-[#338833] fortune-message"
-                    style={{ fontFamily: '"Comic Sans MS", cursive' }}
-                  >
-                    {fortune}
-                  </p>
-                </div>
-                
-                {/* Windows XP-style button */}
-                <button 
-                  className="windows-button bg-gradient-to-b from-[#91c391] to-[#75ad75] hover:from-[#75ad75] hover:to-[#5c9e5c] text-white font-bold py-2 px-6 rounded-lg border border-[#4c9e4c] shadow-sm"
-                  onClick={handleGetNewFortune}
-                  style={{ fontFamily: '"Comic Sans MS", cursive' }}
-                >
-                  open another cookie?
-                </button>
-              </div>
-            )}
-          </div>
-        </main>
-        
-        {/* Footer with creator tag */}
-        <footer className="text-center mt-8">
-          <p className="text-xs text-[#4c9e4c]" style={{ fontFamily: '"Comic Sans MS", cursive' }}>
-            made by sebastiandpy :)
-          </p>
-        </footer>
+      {/* Arcade Coin Slot Light */}
+      <div className="fixed top-2 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-[#FFFF00] rounded-full opacity-20 glow-button z-50"></div>
+      
+      {/* Arcade Joystick Cursor */}
+      <div 
+        className="fixed w-50 h-50 z-50 pointer-events-none" 
+        style={{ 
+          left: `${cursorPosition.x}px`, 
+          top: `${cursorPosition.y}px`,
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, rgba(255, 0, 255, 0.2) 0%, rgba(0, 255, 255, 0.15) 30%, transparent 70%)',
+          boxShadow: '0 0 20px rgba(255, 0, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.2)',
+          borderRadius: '50%',
+          filter: 'blur(2px)',
+          mixBlendMode: 'screen',
+        }}
+      ></div>
+      
+      {/* Arcade Cabinet Decorations - Token lights */}
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        {!isPowerOn ? null : (
+          <>
+            <FortuneClover size={12} top="8%" left="12%" delay={0} />
+            <FortuneClover size={10} top="15%" right="10%" delay={0.5} />
+            <FortuneClover size={14} bottom="12%" left="18%" delay={1} />
+            <FortuneClover size={11} bottom="14%" right="15%" delay={1.5} />
+            <FortuneClover size={13} top="50%" left="5%" delay={2} />
+            <FortuneClover size={9} top="30%" right="7%" delay={2.5} />
+          </>
+        )}
+      </div>
+
+      {/* Arcade Cabinet Frame */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
+        <div className="absolute top-0 left-0 w-full h-6 bg-gradient-to-b from-[#550055] to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-6 bg-gradient-to-t from-[#550055] to-transparent"></div>
+        <div className="absolute top-0 left-0 h-full w-6 bg-gradient-to-r from-[#550055] to-transparent"></div>
+        <div className="absolute top-0 right-0 h-full w-6 bg-gradient-to-l from-[#550055] to-transparent"></div>
+      </div>
+      
+      {/* Power Flicker Effect */}
+      {isPowerOn && (
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden screen-flicker">
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF00FF] opacity-30 animate-pulse" 
+            style={{ animationDuration: '4s' }}></div>
+          <div className="absolute top-1/3 left-0 w-full h-[1px] bg-[#00FFFF] opacity-20 animate-pulse" 
+            style={{ animationDuration: '6s' }}></div>
+          <div className="absolute top-2/3 left-0 w-full h-[1px] bg-[#FFFF00] opacity-15 animate-pulse" 
+            style={{ animationDuration: '5s' }}></div>
+        </div>
+      )}
+
+      <div className={`container mx-auto px-2 sm:px-4 pt-4 sm:pt-8 pb-8 sm:pb-16 relative z-10 ${!isPowerOn ? 'opacity-0' : 'animate-fade-in'}`}>
+        <Header />
+        <FortuneContainer />
+        <Footer />
+      </div>
+      
+      {/* Arcade cabinet buttons */}
+      <div className="fixed bottom-2 left-0 w-full pointer-events-none z-20 flex justify-center">
+        <div className="flex space-x-2 opacity-30">
+          <div className="w-4 h-4 rounded-full bg-[#FF0000] glow-button"></div>
+          <div className="w-4 h-4 rounded-full bg-[#00FF00] glow-button"
+               style={{ animationDelay: '0.2s' }}></div>
+          <div className="w-4 h-4 rounded-full bg-[#0000FF] glow-button"
+               style={{ animationDelay: '0.4s' }}></div>
+          <div className="w-4 h-4 rounded-full bg-[#FFFF00] glow-button"
+               style={{ animationDelay: '0.6s' }}></div>
+        </div>
       </div>
     </div>
   );

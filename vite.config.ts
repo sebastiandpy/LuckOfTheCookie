@@ -25,12 +25,7 @@ export default defineConfig({
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
-  server: {
-    allowedHosts: [
-      "1323fb3b-b1bd-4497-8c5d-d1f5a66a32bf-00-3s7i5a5y309vp.spock.replit.dev",
-    ],
-    root: path.resolve(import.meta.dirname, "client"),
-  },
+  root: path.resolve(import.meta.dirname, "client"),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,

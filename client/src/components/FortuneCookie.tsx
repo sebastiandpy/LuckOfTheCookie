@@ -6,7 +6,7 @@ export default function FortuneCookie() {
   const [isOpen, setIsOpen] = useState(false);
   const [typedFortune, setTypedFortune] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const { fortune, generateFortune } = useFortuneMessage();
+  const { fortune, getNewFortune } = useFortuneMessage();
   
   // Typewriter effect
   useEffect(() => {
@@ -37,16 +37,12 @@ export default function FortuneCookie() {
       computerBeep.play();
       
       setIsOpen(true);
-      generateFortune();
+      getNewFortune();
     }
   };
 
   const handleGetNewFortune = () => {
     setIsOpen(false);
-    setTimeout(() => {
-      setIsOpen(true);
-      generateFortune();
-    }, 300);
   };
 
   return (
