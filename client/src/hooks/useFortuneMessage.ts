@@ -1,164 +1,98 @@
 import { useState, useCallback } from "react";
 
 const fortunes = [
-  // 80s/Retro Computing
-  "Your friendship algorithm is stronger than BASIC. You'll go far.",
-  "Even at 300 baud, your potential connects quickly to success.",
-  "The answer to your question is 42, and also 'yes, go for it!'",
-  "Your brain is more powerful than a Commodore 64 - use it to create magic!",
-  "WARNING: Success overflow error. Your potential exceeds system limits.",
-  "Loading happiness.exe...........................100% COMPLETE",
+  // Y2K and Windows XP era quotes
+  "You are about to experience a moment of pure happiness.exe!",
+  "Windows to new opportunities are opening for you!",
+  "Your future is loading... please wait... SUCCESS!",
+  "It appears you've found the shortcut to good fortune!",
+  "You are running the latest version of happiness.dll",
+  "Error 404: Problems not found in your future!",
+  "You have successfully installed Good_Luck.exe on your life!",
+  "You've received an instant message from the universe: 'You rock!'",
+  "No firewalls can block the good fortune coming your way!",
+  "Your digital destiny is being saved to Cloud9!",
   
-  // Stranger Things references
-  "The Upside Down's got nothing on your positive mindset.",
-  "Your mental firewall is impenetrable. No mind flayer can bring you down.",
-  "When faced with a locked door, remember: Friends don't lie.",
-  "In a world full of Demogorgons, be an Eleven.",
-  "Sometimes, all you need is a good friend and a box of Eggos.",
-  "Your future is so bright, it's lighting up the Christmas lights.",
+  // Early 2000s internet references
+  "You've Got Mail! It's a package of good luck!",
+  "Your dial-up connection to happiness is upgrading to broadband!",
+  "AFK for a moment? Life will wait for you to return!",
+  "Your Myspace Top 8 are all rooting for your success!",
+  "Your AIM away message should read 'Currently achieving dreams'",
+  "Buffering... buffering... your good fortune has loaded!",
+  "Your life just got a system upgrade! Reboot and enjoy!",
+  "Your personal bandwidth is expanding - download more dreams!",
+  "Your Geocities page of life is the coolest on the web!",
+  "Like your favorite Flash game, you're simple but amazing!",
   
-  // Back to the Future quotes/references
-  "Your future isn't written yet. No one's is. Your future is whatever you make it.",
-  "Roads? Where you're going, you don't need roads. Your path is uniquely yours.",
-  "If you put your mind to it, you can accomplish anything.",
-  "1.21 gigawatts of opportunity are coming your way!",
-  "Great Scott! Your potential is reaching 88mph!",
-  "Nobody calls you chicken. You face challenges head-on.",
-  "You're as reliable as a DeLorean with a full tank of plutonium.",
+  // Early 2000s pop culture
+  "Your future's so bright, you need Matrix sunglasses!",
+  "You're the star of your own reality show, and ratings are through the roof!",
+  "Like your old Nokia phone, you're practically indestructible!",
+  "You're as cool as downloading music on Napster (but legal)!",
+  "Your potential is bigger than your first iPod's storage!",
+  "You've been voted off Anxiety Island - welcome to Success Beach!",
+  "Your life's playlist is full of nothing but bangers!",
+  "You're going to shine brighter than bedazzled jeans!",
+  "You're the flip phone of people - reliable, beloved, and iconic!",
+  "Like Britney said: your toxic relationships are over, and your strength is stronger!",
   
-  // Star Wars quotes/references
-  "Do or do not. There is no try. Your success awaits.",
-  "The Force will be with you. Always. Even on tough days.",
-  "This is the way. Stay true to yourself and find your path.",
-  "Never tell yourself the odds. Your potential is limitless.",
-  "You're the chosen one of your own story.",
-  "These aren't the droids you're looking for, but the opportunities you seek are just ahead.",
-  "The dark side has cookies, but your path has authentic joy.",
-  "Trust your feelings - they'll lead you to amazing places.",
+  // MSN Messenger / AOL style
+  "~*~*~ YoUr DrEaMs ArE cOmInG tRuE ~*~*~",
+  ">>>> Good luck is headed your way! <<<<",
+  "::*:. You are special in every way .::*::",
+  "-=*=- A smile from you brightens everyone's day! -=*=-",
+  "~!~ EvErYtHiNg Is GoInG tO bE oK ~!~",
+  ".:*~*:. Today is YOUR day! .:*~*:.",
+  "((( Sending positive vibes your way! )))",
+  "<3 <3 <3 You are loved more than you know! <3 <3 <3",
+  "\\\\// Success is just around the corner! \\\\//",
+  "**!.. Your happiness matters most ..!**",
   
-  // Marvel references (expanded)
-  "With great power comes great opportunity. Use it wisely.",
-  "You're stronger than you know. That's your superpower.",
-  "Even the strongest avengers needed friends. Lean on yours.",
-  "Sometimes we lose, sometimes we win. But we always have another chance.",
-  "I can do this all day. And so can you, when it matters most.",
-  "You're worthy - no magic hammer required.",
-  "The real infinity stones are the talents inside you.",
-  "In the endgame of life, you'll come out on top.",
-  "On your left! Good things are coming up fast.",
-  "Dormammu, I've come to bargain! Life will negotiate with you if you're persistent.",
-  "That is America's smile. Wear it proudly.",
-  "Your success is inevitable... I am inevitable.",
-  "The hardest choices require the strongest wills. You've got what it takes.",
-  "Reality can be whatever you want it to be. Dream big!",
-  "Part of the journey is the end... but your best chapter is just beginning.",
-  "We're in the endgame now, and you're positioned to win.",
-  "You will never be a god... but you can be an awesome human being.",
-  "That's my secret, I'm always awesome. You are too.",
-  "No amount of money ever bought a second of time. Use yours wisely.",
-  "There was an idea... to bring together remarkable people. You're one of them.",
-  "You're made of iron, forged through challenges and stronger for it.",
-  "A bit of both savage and mindful. You've got the Banner/Hulk balance.",
-  "Whatever it takes - you've got the determination to succeed.",
+  // Microsoft Windows references
+  "Task Manager says: All your dreams are responding perfectly!",
+  "System update: Your luck has been upgraded to version 2.0!",
+  "Recycle Bin: Your worries have been permanently deleted!",
+  "Your potential requires no defragmentation - it's perfectly organized!",
+  "You've successfully installed JOY.exe - no restart required!",
+  "Clipboard: Your future has been copied and is ready to paste!",
+  "Your happiness is now set as the default program!",
+  "You've unlocked administrator privileges for your own destiny!",
+  "Your personal firewall has blocked all negativity!",
+  "Auto-save enabled: Your progress in life will never be lost!",
   
-  // Classic movie quotes/references
-  "Life is like a box of chocolates. Yours is filled with the good ones.",
-  "May the odds be ever in your favor today and beyond.",
-  "Here's looking at you, kid. You've got this.",
-  "To infinity and beyond - that's where your potential reaches.",
-  "You had me at 'hello world' - your code for success is flawless.",
-  "You're gonna need a bigger boat for all your future achievements.",
-  "Nobody puts your talents in a corner.",
-  "Just keep swimming - success is on the horizon.",
-  "You're the king of the world at whatever you choose to pursue.",
+  // Early social media/Y2K phrases
+  "Friendster would like you to know: Good things are coming!",
+  "Away Message: Currently finding amazing opportunities!",
+  "Your Xanga blog of life is getting tons of positive comments!",
+  "Your fortune has been shared with everyone in your network!",
+  "You've been tagged in a photo called 'Awesome People'!",
+  "BRB, just grabbing all the success that's meant for you!",
+  "Consider this a digital hug when you need it most!",
+  "TTYL - Today Tells You 'Lovely things are coming!'",
+  "IDK why you worry - your future is incredibly bright!",
+  "LOL - Lots Of Luck coming your way!",
   
-  // Olivia Rodrigo inspired (not direct quotes)
-  "It's brutal out here sometimes, but you'll make it through stronger.",
-  "You're happier than ever when you stay true to yourself.",
-  "Don't let anyone step on your glow-up. Keep shining.",
-  "Good for you, focusing on personal growth. It never goes out of style.",
-  "Drivers license? Where you're headed is all internal growth.",
-  "Deja vu? No, this is a brand new day with fresh opportunities.",
-  "Don't let jealousy jealousy get in your way. You've got this.",
-  "Even after heartbreak, you come out stronger like a butterfly.",
-  "You've got that sour attitude toward negativity and sweet approach to challenges.",
-  "Your hope is like a traitor's gate - always open to new possibilities.",
-  
-  // Stray Kids inspired (not direct quotes)
-  "You make your own rules. No one can stop you now.",
-  "Even on days filled with thunderous challenges, you'll find your way.",
-  "You're the star walking through the mirror of your own destiny.",
-  "Your potential is limitless, stretching to the horizon and beyond.",
-  "God's Menu of opportunities is wide open for you to sample.",
-  "Your passion burns like a red hot chili pepper. Never let it cool.",
-  "Back door or front door - you'll find the entrance to success.",
-  "You're building your own kingdom brick by brick.",
-  "Double knot your determination - it'll never come undone.",
-  "Hellevator? No thanks. You're rising to the top your own way.",
-  
-  // K-pop inspired (not direct quotes)
-  "Your dynamite personality will light up any room.",
-  "Ice cream sweet success is coming your way.",
-  "When life gives you sour grapes, make sweet lemonade.",
-  "Your talents have that butter-smooth quality people appreciate.",
-  "Even in black and white moments, you find colorful solutions.",
-  "Your energy is a shot of adrenaline to everyone around you.",
-  "Fake love? Not in your future. Authentic connections await.",
-  "You're the main character in your own idol story.",
-  "Like a spring day after winter, your breakthrough is coming.",
-  
-  // Modern pop culture
-  "Even in a multiverse of possibilities, you're exceptional in every one.",
-  "You don't need plot armor to succeed - you've got real determination.",
-  "Your character arc is just getting to the good part. Stay tuned.",
-  "Main character energy: you've got it. Use it wisely.",
-  "You're not a side quest - you're the whole game.",
-  "Your life has better writing than Game of Thrones' final season.",
-  "Power up! Your next level achievements are loading.",
-  "No need for cheat codes - you're winning this game fairly.",
-  "Achievement unlocked: Awesome Future Ahead",
-  "Like a perfect TikTok algorithm, you're connecting with your destiny.",
-  
-  // Gen Z slang/references 
-  "No cap - your future's looking extra bright.",
-  "You're giving main character energy and we're here for it.",
-  "That thing you're worried about? It's cheugy. Let it go.",
-  "Keep that rizz going strong. You're more capable than you know.",
-  "Your vibe check results are elite. Keep up the positive energy.",
-  "Big yikes to doubts. You're about to slay your goals.",
-  "You're about to go from mid to elite tier in your chosen field.",
-  "Sheesh! Your potential is living rent-free in everyone's mind.",
-  "It's giving success. Periodt.",
-  "You understood the assignment. Now go ace it.",
-  "The universe is simping for your success. We stan.",
-  "Your glow-up era starts now. And that's on periodt.",
-  "Hits different when you believe in yourself. Try it.",
-  "Bestie, your future is about to be so fire.",
-  "The main timeline is where you thrive. No multiverse needed.",
-  "Consider this a sign to level up. It's bussin'.",
-  "Your next W is already on the way.",
-  "This isn't a POV, it's the truth: you're going places.",
-  "It's giving winner energy, ngl.",
-  "Stay booked and busy with things that matter.",
-  
-  // More inspirational quotes
-  "Your playlist of success has unlimited skips and no ads.",
-  "The algorithm of life has recommended greatness for your future.",
-  "You're streaming success in high definition, no buffering needed.",
-  "Your potential is downloading at fiber optic speeds.",
-  "Like the best playlist, your life hits all the right notes.",
-  "When life auto-plays the next episode, it'll be even better than the last.",
-  "No spoilers needed - your future storyline is epic.",
-  "Your life's rating? Five stars, highly recommended, would experience again."
+  // More inspirational Y2K style messages
+  "Lucky green four-leaf clover energy surrounds you today!",
+  "The universe is sending you a smiley face emoticon! :)",
+  "Congratulations! You're the 1,000,000th visitor to Good Fortune!",
+  "Your personal happiness counter is about to roll over to infinity!",
+  "The chat room of life is talking about how amazing you are!",
+  "Your happiness is not a trial version - it's the full package!",
+  "Like a screensaver, you're most beautiful when in motion!",
+  "Your cookie settings have been updated to accept only good fortune!",
+  "In the game of life, you're the final boss of awesome!",
+  "System scan complete: No problems found in your future!"
 ];
 
 export default function useFortuneMessage() {
   const [fortune, setFortune] = useState("");
 
-  const getNewFortune = useCallback(() => {
+  const generateFortune = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * fortunes.length);
     setFortune(fortunes[randomIndex]);
   }, []);
 
-  return { fortune, getNewFortune };
+  return { fortune, generateFortune };
 }

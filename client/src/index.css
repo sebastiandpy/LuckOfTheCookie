@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&family=Comic+Neue&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,36 +10,15 @@
   }
 
   body {
-    @apply font-mono antialiased bg-background text-foreground;
-    background-color: #000000;
+    @apply antialiased bg-background text-foreground;
+    font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+    background-color: #d8f0d8;
     background-image: 
-      radial-gradient(rgba(255, 0, 255, 0.15) 1px, transparent 0),
-      linear-gradient(to bottom, rgba(50, 0, 80, 0.3), rgba(0, 0, 0, 0.95));
-    background-size: 20px 20px, 100% 100%;
+      url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20z' fill='%23338833' fill-opacity='0.1'/%3E%3C/svg%3E"),
+      linear-gradient(to bottom, #d8f0d8, #c7e6c7);
+    background-size: 40px 40px, 100% 100%;
     position: relative;
     overflow-x: hidden;
-    /* Arcade carpet pattern overlay */
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23550055' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-      linear-gradient(to bottom, rgba(20, 0, 40, 0.95), rgba(0, 0, 0, 1));
-  }
-  
-  /* VHS scanlines effect */
-  body::before {
-    content: "";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(to bottom,
-      rgba(18, 16, 16, 0) 50%,
-      rgba(0, 0, 0, 0.3) 50%
-    );
-    background-size: 100% 4px;
-    z-index: 999;
-    opacity: 0.2;
   }
 }
 
@@ -123,30 +100,33 @@
     font-family: 'Comic Sans MS', 'Comic Neue', cursive;
   }
   
-  .retro-button {
-    @apply bg-[#000000] 
-           border-2 border-[#FF00FF] 
-           shadow-[0_0_8px_#FF00FF,_0_0_15px_rgba(255,0,255,0.5)]
-           transition-all duration-200 transform text-[#FF00FF];
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.8em;
-    padding: 0.7em 1.2em;
-    letter-spacing: 1px;
+  /* Windows XP style button */
+  .windows-button {
+    @apply bg-gradient-to-b from-[#91c391] to-[#75ad75] 
+           border border-[#4c9e4c] 
+           shadow-sm
+           transition-all duration-200 transform text-white font-bold;
+    font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
   }
   
-  .retro-button:hover {
-    @apply bg-[#1a0030] scale-105
-           shadow-[0_0_12px_#FF00FF,_0_0_20px_rgba(255,0,255,0.7)];
+  .windows-button:hover {
+    @apply from-[#75ad75] to-[#5c9e5c];
   }
   
-  .outline-text {
-    -webkit-text-stroke: 1px #FF00FF;
-    text-shadow: 2px 2px 0 #420080;
-    color: #00FFFF;
+  .windows-button:active {
+    @apply from-[#5c9e5c] to-[#4c9e4c] shadow-inner transform scale-95;
   }
   
-  .shadow-retro {
-    text-shadow: 2px 2px 0 #FF00FF, -2px -2px 0 #00FFFF;
+  /* Y2K style message box */
+  .message-box {
+    @apply bg-white border border-[#75ad75] rounded-md p-4 shadow-md;
+  }
+  
+  /* Windows XP style panel */
+  .windows-panel {
+    @apply bg-white border border-[#75ad75] rounded-lg shadow-md p-4;
   }
   
   .animate-float {
@@ -256,177 +236,149 @@
   animation: screenFlicker 10s infinite;
 }
 
-/* Matrix style glow effect */
-@keyframes matrixGlow {
+/* Y2K button glow effect */
+@keyframes y2kGlow {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5),
-                0 0 10px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 5px rgba(117, 173, 117, 0.5),
+                0 0 10px rgba(117, 173, 117, 0.3);
     opacity: 0.8;
   }
   50% {
-    box-shadow: 0 0 8px rgba(0, 255, 0, 0.7),
-                0 0 15px rgba(0, 255, 0, 0.5);
+    box-shadow: 0 0 8px rgba(117, 173, 117, 0.7),
+                0 0 15px rgba(117, 173, 117, 0.5);
     opacity: 1;
   }
 }
 
-.glow-button {
-  animation: matrixGlow 1.5s ease-in-out infinite;
+.y2k-glow {
+  animation: y2kGlow 2s ease-in-out infinite;
 }
 
-/* Matrix digital rain animation */
-@keyframes matrixRain {
+/* Windows XP style loading bar */
+@keyframes windowsLoading {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.windows-loading-bar {
+  height: 20px;
+  background: linear-gradient(to right, #91c391, #75ad75);
+  border-radius: 3px;
+  animation: windowsLoading 2s linear;
+}
+
+/* Cookie open animation */
+@keyframes cookieOpen {
   0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  10% {
-    transform: translateY(10%);
-    opacity: 0.8;
-  }
-  90% {
-    transform: translateY(80%);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-.animate-matrix-rain {
-  animation: matrixRain 2s linear infinite;
-}
-
-/* Cookie crack animation */
-@keyframes cookieCrack {
-  0% {
-    opacity: 0;
-    background: radial-gradient(circle at center, rgba(0, 255, 0, 0.7) 0%, transparent 10%);
-  }
-  30% {
-    opacity: 0.8;
-    background: radial-gradient(circle at center, rgba(0, 255, 0, 0.7) 0%, transparent 30%);
-  }
-  100% {
-    opacity: 0;
-    background: radial-gradient(circle at center, rgba(0, 255, 0, 0) 0%, transparent 100%);
-  }
-}
-
-.cookie-crack {
-  animation: cookieCrack 0.6s ease-out forwards;
-}
-
-/* Cookie break left animation */
-@keyframes cookieBreakLeft {
-  0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(-20px) rotate(-20deg);
-  }
-}
-
-/* Cookie break right animation */
-@keyframes cookieBreakRight {
-  0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(20px) rotate(20deg);
-  }
-}
-
-/* Matrix style text glitch */
-@keyframes glitch {
-  0% {
-    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
-                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
-                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-  }
-  14% {
-    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
-                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
-                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-  }
-  15% {
-    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
-                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
-                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
-  }
-  49% {
-    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
-                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
-                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    transform: scale(1) rotate(0deg);
   }
   50% {
-    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
-                0.05em 0 0 rgba(0, 255, 0, 0.75),
-                0 -0.05em 0 rgba(0, 0, 255, 0.75);
-  }
-  99% {
-    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
-                0.05em 0 0 rgba(0, 255, 0, 0.75),
-                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    transform: scale(1.1) rotate(5deg);
   }
   100% {
-    text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
-                -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
-                -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+    transform: scale(1) rotate(0deg);
   }
 }
 
-.animate-glitch {
-  animation: glitch 1s linear infinite;
-  margin: 0 auto;
+.cookie-open-animation {
+  animation: cookieOpen 0.5s ease-out;
 }
 
-/* Matrix style cookie glow */
-.cookie-glow {
-  filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.7));
-}
-
-/* Matrix power up effect */
-@keyframes powerUp {
-  0% {
-    opacity: 0;
-    filter: brightness(0);
-  }
-  5% {
-    opacity: 0.5;
-    filter: brightness(0.5);
-  }
-  10% {
-    opacity: 0.2;
-    filter: brightness(0.2);
-  }
-  15% {
-    opacity: 0.8;
-    filter: brightness(0.8);
-  }
-  20% {
-    opacity: 0.4;
-    filter: brightness(0.4);
+/* Windows XP error blink */
+@keyframes errorBlink {
+  0%, 100% {
+    background-color: #f0f8f0;
   }
   25% {
-    opacity: 1;
-    filter: brightness(1);
+    background-color: #f8e0e0;
   }
-  30% {
-    opacity: 0.6;
-    filter: brightness(0.6);
+  50% {
+    background-color: #f0f8f0;
   }
-  35% {
-    opacity: 1;
-    filter: brightness(1);
-  }
-  100% {
-    opacity: 1;
-    filter: brightness(1);
+  75% {
+    background-color: #f8e0e0;
   }
 }
 
-.power-up {
-  animation: powerUp 2s ease-out forwards;
+.error-blink {
+  animation: errorBlink 2s;
+}
+
+/* Windows XP tooltip appear */
+@keyframes tooltipAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip-appear {
+  animation: tooltipAppear 0.3s ease-out forwards;
+}
+
+/* MSN message notification */
+@keyframes messageNotification {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+.message-notification {
+  animation: messageNotification 0.5s ease-in-out;
+}
+
+/* Windows XP success pulse */
+@keyframes successPulse {
+  0%, 100% {
+    background-color: rgba(117, 173, 117, 0.1);
+  }
+  50% {
+    background-color: rgba(117, 173, 117, 0.3);
+  }
+}
+
+.success-pulse {
+  animation: successPulse 2s ease-in-out infinite;
+}
+
+/* Floating clover animation */
+@keyframes floatingClover {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(-2deg);
+  }
+}
+
+.floating-clover {
+  animation: floatingClover 6s ease-in-out infinite;
+}
+
+/* Fortune message typewriter effect */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.fortune-message {
+  overflow: hidden;
+  white-space: normal;
+  animation: fadeIn 0.5s ease-out;
 }

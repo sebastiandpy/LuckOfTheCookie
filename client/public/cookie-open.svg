@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .pixel {
+      shape-rendering: crispEdges;
+    }
+  </style>
+  <!-- Open Fortune Cookie -->
+  <g transform="translate(25, 25) scale(1.2)">
+    <!-- Left Cookie Half -->
+    <g transform="translate(-5, 0) rotate(-10)">
+      <path class="pixel" d="M 30,30 L 60,30 L 70,40 L 70,60 L 60,70 L 30,70 L 20,60 L 20,40 Z" fill="#F5A742"/>
+      <path class="pixel" d="M 30,30 L 60,30 L 70,40 L 70,60 L 60,70 L 30,70 L 20,60 L 20,40 Z" fill="none" stroke="#C97D1C" stroke-width="2"/>
+      
+      <!-- Cookie Details -->
+      <line class="pixel" x1="30" y1="40" x2="60" y2="40" stroke="#C97D1C" stroke-width="2"/>
+      <line class="pixel" x1="30" y1="50" x2="60" y2="50" stroke="#C97D1C" stroke-width="2"/>
+      <line class="pixel" x1="30" y1="60" x2="60" y2="60" stroke="#C97D1C" stroke-width="2"/>
+    </g>
+    
+    <!-- Right Cookie Half -->
+    <g transform="translate(30, 0) rotate(10)">
+      <path class="pixel" d="M 30,30 L 60,30 L 70,40 L 70,60 L 60,70 L 30,70 L 20,60 L 20,40 Z" fill="#F5A742"/>
+      <path class="pixel" d="M 30,30 L 60,30 L 70,40 L 70,60 L 60,70 L 30,70 L 20,60 L 20,40 Z" fill="none" stroke="#C97D1C" stroke-width="2"/>
+      
+      <!-- Cookie Details -->
+      <line class="pixel" x1="30" y1="40" x2="60" y2="40" stroke="#C97D1C" stroke-width="2"/>
+      <line class="pixel" x1="30" y1="50" x2="60" y2="50" stroke="#C97D1C" stroke-width="2"/>
+      <line class="pixel" x1="30" y1="60" x2="60" y2="60" stroke="#C97D1C" stroke-width="2"/>
+    </g>
+    
+    <!-- Fortune Paper -->
+    <rect class="pixel" x="30" y="45" width="40" height="25" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/>
+    <line class="pixel" x1="35" y1="50" x2="65" y2="50" stroke="#AAAAAA" stroke-width="1"/>
+    <line class="pixel" x1="35" y1="55" x2="65" y2="55" stroke="#AAAAAA" stroke-width="1"/>
+    <line class="pixel" x1="35" y1="60" x2="65" y2="60" stroke="#AAAAAA" stroke-width="1"/>
+    <line class="pixel" x1="35" y1="65" x2="55" y2="65" stroke="#AAAAAA" stroke-width="1"/>
+  </g>
+</svg>
