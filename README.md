@@ -27,7 +27,7 @@ A fun Y2K-style virtual fortune cookie website that delivers random uplifting, g
 
 ## 🚀 Try it live
 
-👉 [Click here to open the cookie 🍪](https://luckofthecookie.onrender.com/)
+[![Live Demo](https://img.shields.io/badge/View%20Website-Click%20Here-blue?style=for-the-badge&logo=render)](https://luckofthecookie.onrender.com/)
 
 ---
 
