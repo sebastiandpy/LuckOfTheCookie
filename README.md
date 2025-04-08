@@ -4,7 +4,7 @@ A fun Y2K-style virtual fortune cookie website that delivers random uplifting, g
 
 ![image](https://github.com/user-attachments/assets/e283e450-4687-4482-9654-4a667033a0ad)
 
-
+---
 
 ## 🌟 Features
 
@@ -14,20 +14,28 @@ A fun Y2K-style virtual fortune cookie website that delivers random uplifting, g
 - Responsive design for desktop & mobile
 - Tiny Comic Sans footer credit: `made by sebastiandpy :)`
 
+---
+
 ## 📁 Tech Stack
 
 - HTML
 - CSS
 - JavaScript (vanilla)
-- Deployed with render.com
+- Deployed with [Render](https://render.com)
+
+---
 
 ## 🚀 Try it live
 
-https://luckofthecookie.onrender.com/
+👉 [Click here to open the cookie 🍪](https://luckofthecookie.onrender.com/)
+
+---
 
 ## 📸 Screenshots
 
-screenshots here of the site in action once it's deployed.
+_Screenshots of the site in action will be added once it's deployed._
+
+---
 
 ## 🧠 Inspirations
 
@@ -35,6 +43,8 @@ screenshots here of the site in action once it's deployed.
 - Pop culture: Star Wars, Back to the Future, Marvel, Olivia Rodrigo
 - Real-life good vibes and chill energy
 
+---
+
 ## ✨ Credits
 
-Made with 💚 by **sebastiandpy :)
+Made with 💚 by **sebastiandpy :)**
