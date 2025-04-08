@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Cookie Preview</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #daffd6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .header {
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.7);
+        }
+        
+        .fortune-cookie {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            background-image: url('/cookie-closed.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .fortune-cookie.open {
+            background-image: url('/cookie-open.svg');
+        }
+        
+        .fortune-cookie:hover {
+            transform: scale(1.05);
+        }
+        
+        .message {
+            margin-top: 30px;
+            padding: 15px 20px;
+            background-color: white;
+            border: 2px solid #9cde90;
+            border-radius: 10px;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            font-size: 1.1rem;
+        }
+        
+        .message.visible {
+            opacity: 1;
+        }
+        
+        .generate-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #9cde90;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: none;
+        }
+        
+        .generate-button.visible {
+            display: block;
+        }
+        
+        .generate-button:hover {
+            background-color: #8bc980;
+        }
+        
+        .clover {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url('/pixel-clover.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>lucky day Y2K</h1>
+        </div>
+        
+        <div class="fortune-cookie" id="fortune-cookie"></div>
+        
+        <div class="message" id="fortune-message">
+            You will have a very lucky day today! Trust your instincts and embrace new opportunities.
+        </div>
+        
+        <button class="generate-button" id="generate-button">open another cookie?</button>
+    </div>
+    
+    <!-- Decorative clovers -->
+    <div class="clover" style="top: 10%; left: 10%;"></div>
+    <div class="clover" style="top: 20%; right: 15%;"></div>
+    <div class="clover" style="bottom: 30%; left: 20%;"></div>
+    <div class="clover" style="bottom: 15%; right: 10%;"></div>
+    
+    <div class="footer">
+        made by sebastiandpy :)
+    </div>
+
+    <script>
+        const fortuneCookie = document.getElementById('fortune-cookie');
+        const fortuneMessage = document.getElementById('fortune-message');
+        const generateButton = document.getElementById('generate-button');
+        
+        let isOpen = false;
+        
+        const fortunes = [
+            "Your future looks bright like Windows XP's blue sky wallpaper.",
+            "Today is your lucky day! Someone will send you a funny GIF.",
+            "You will find what you're looking for in the last folder you check.",
+            "Don't worry about that embarrassing email - nobody read it anyway.",
+            "Someone is thinking about you right now (it's your computer).",
+            "You are destined for greatness... after this coffee break.",
+            "A surprise text message will make you smile today.",
+            "Your playlist will hit differently today.",
+            "Back to the Future: Your future hasn't been written yet. No one's has. Your future is whatever you make it.",
+            "Star Wars: Do or do not, there is no try. Today is a 'do' day for you!",
+            "Marvel: With great power comes great responsibility... and a great day ahead!",
+            "Olivia Rodrigo says: god, it's brutal out here - but not for you today!",
+            "Olivia vibes: good 4 u, you look happy and healthy!",
+            "K-pop energy: Your day will shine brighter than a lightstick ocean at a concert.",
+            "BTS wisdom: Life goes on, and today it goes amazingly for you!",
+            "Filipino blessing: Swerte ka ngayon! (You're lucky today!)",
+            "Slay the day, bestie! The universe is giving main character energy.",
+            "You're giving winner vibes today. Period.",
+            "No cap - your fortune is looking fire today!",
+            "It's about to be so real for you, besties."
+        ];
+        
+        function getRandomFortune() {
+            const randomIndex = Math.floor(Math.random() * fortunes.length);
+            return fortunes[randomIndex];
+        }
+        
+        fortuneCookie.addEventListener('click', () => {
+            if (!isOpen) {
+                // Open the cookie
+                fortuneCookie.classList.add('open');
+                setTimeout(() => {
+                    fortuneMessage.textContent = getRandomFortune();
+                    fortuneMessage.classList.add('visible');
+                    generateButton.classList.add('visible');
+                }, 500);
+                isOpen = true;
+            }
+        });
+        
+        generateButton.addEventListener('click', () => {
+            // Reset
+            fortuneCookie.classList.remove('open');
+            fortuneMessage.classList.remove('visible');
+            generateButton.classList.remove('visible');
+            
+            // Wait a bit then reopen with new fortune
+            setTimeout(() => {
+                fortuneCookie.classList.add('open');
+                setTimeout(() => {
+                    fortuneMessage.textContent = getRandomFortune();
+                    fortuneMessage.classList.add('visible');
+                    generateButton.classList.add('visible');
+                }, 500);
+            }, 300);
+        });
+    </script>
+</body>
+</html>
